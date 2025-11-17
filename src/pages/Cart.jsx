@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import {Table} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeName, addAge } from './../store/userSlice';
-import { addNum } from './../store.js'
+import { addNum, minusNum, deleteCart } from './../store.js'
  
 
 function CartPage() {
@@ -18,7 +18,8 @@ function CartPage() {
                     <th>#</th>
                     <th>상품명</th>
                     <th>수량</th>
-                    <th>변경하기</th>
+                    <th style={{textAlign: 'center'}}
+                    >변경하기</th>
                     </tr>
                 </thead>
 
@@ -45,13 +46,25 @@ function CartList(props) {
                 <td>{props.elem.id}</td>
                 <td>{props.elem.name}</td>
                 <td>{props.elem.count}</td>
-                <td>
-                    <button id={props.elem.id} onClick={(e)=>{
+                <td style={{textAlign: 'center'}}>
+                    {/* 상품수량추가버튼 구현 */}
+                    <button className="cartlist-button"
+                     onClick={(e)=>{
                         // console.log(e.target.id)
-                        
-                        dispatch(addNum(Number(e.target.id)))
-
+                        dispatch(addNum(props.elem.id))
                     }}>+</button>
+                    {/* 상품수량빼기버튼 구현 */}
+                    <button className="cartlist-button" 
+                     onClick={()=>{
+                        dispatch(minusNum(props.elem.id))
+                     }}
+                    >-</button>
+                    <button
+                    onClick={()=>{
+                        dispatch(deleteCart(props.elem.id))
+                    }}
+                    className="cartlist-button">
+                        <i class="bi bi-trash3-fill"></i></button>
                 </td>
                 </tr>
             </tbody>

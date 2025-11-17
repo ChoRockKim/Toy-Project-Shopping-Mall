@@ -77,7 +77,7 @@ function DetailPage(props) {
                   ))
                 }}
                 
-                className="btn btn-danger">주문하기</button> <br/><br/>
+                className="">주문하기</button> <br/><br/>
                 <input type="text" onChange={(e)=>{
                   setText(e.target.value)}} value={text} />
               </div>

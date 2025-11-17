@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import data from './data.js'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import DetailPage from './pages/Detail.jsx'
-import MainPage from './pages/mainpage.jsx';
+import MainPage from './pages/Mainpage.jsx';
 import Cartpage from './pages/Cart.jsx';
 
 
@@ -52,68 +52,12 @@ function App() {
           <Route path='*' element={<div>404 Page Error</div>} />       
 
 
-{/* 
-          <Route path='/about' element={<About/>}>
-            <Route path='member' element={<div>멤버임</div>} />
-            <Route path='location' element={<div>위치임</div>} />
-          </Route> */}
+
         </Routes>
 
   </div>
   );
 }
-
-// function About(){
-//   return(
-//     <div>
-//       <h4>회사 정보임</h4>
-//       <Outlet></Outlet>
-//     </div>
-//   )
-// }
-
-
-// function ShoesInfo(props) {
-//   return (
-//     <>  
-//       <div className="col-md-4 product-box">
-//         <img src={`https://codingapple1.github.io/shop/shoes${props.index+1}.jpg`} className='product-img'/>
-//         <h4>{props.elem.title}</h4>
-//         <p>{props.elem.price}</p>
-//       </div>
-//     </>
-//   )
-// }
-
-// function MainPage(props) {
-//   return (
-//       <>
-//         <div className='main-bg'></div>
-//         <div className='product-container'>
-//           <div className="row">
-//           {props.shoes.map((elem, i)=>{
-//             return (
-//               <ShoesInfo key={i} elem={elem} index={elem.id} />
-//             )
-//           })}
-//           </div>
-//         </div>
-//         <button onClick={()=>{
-//           let copied_shoes = [...props.shoes];
-//           copied_shoes.sort((a,b)=>{
-//               if (a.title > b.title) {
-//                 return 1
-//               } else {
-//                 return -1
-//               }
-//             })
-//           props.setShoes(copied_shoes)}}
-//         style={{display:"block", margin: 'auto', borderRadius: '5px'}}>
-//           가나다순 정렬</button>
-//       </>
-//   )
-// }
-
 
 
 export default App
