@@ -1,11 +1,13 @@
 import { use, useContext, useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Nav from 'react-bootstrap/Nav';
 import { Tab } from "bootstrap";
 import { useDispatch } from "react-redux";
-import { addCart } from './../store.js'
+import { addCart, newCart } from './../store.js'
+import AlertMessage from "./../components/Alert.jsx";
+
 
 function DetailPage(props) {
 
@@ -45,7 +47,8 @@ function DetailPage(props) {
 
   let [tabs, setTabs] = useState(0)
   let dispatch = useDispatch()
-
+  let [alertPop, setAlertPop] = useState(false)
+  const alertTimer = useRef(null)
 
   return (
           // 뒤로가기 버튼 구현
@@ -74,12 +77,26 @@ function DetailPage(props) {
                     {id : cur_shoes.id,
                     name : cur_shoes.title,
                     count : 1}
-                  ))
+                  ));
+                  dispatch(newCart(cur_shoes.title))
+
+                  if (alertTimer.current) {
+                    clearTimeout(alertTimer.current)
+                  }
+
+                  setAlertPop(true)
+                  alertTimer.current = setTimeout(()=>{
+                    setAlertPop(false)
+                  }, 2000)
                 }}
-                
                 className="">주문하기</button> <br/><br/>
                 <input type="text" onChange={(e)=>{
                   setText(e.target.value)}} value={text} />
+                  
+                  
+                  <AlertMessage alertPop={alertPop} setAlertPop={setAlertPop}/>
+              
+              
               </div>
             </div>
 

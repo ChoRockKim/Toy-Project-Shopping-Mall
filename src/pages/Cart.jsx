@@ -22,14 +22,14 @@ function CartPage() {
                     >변경하기</th>
                     </tr>
                 </thead>
-
                 {cartItems.map((elem, i)=> 
                     <CartList idx = {i} elem = {elem} key={i}/>    
                     )}
 
 
             </Table> 
-
+                {cartItems.length == 0 && <div style={{textAlign: 'center'}}>
+                    장바구니에 상품이 없습니다.</div>}
         </div>
     )
 }

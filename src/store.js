@@ -47,12 +47,26 @@ let cart = createSlice({
   }
 })
 
+let newOne = createSlice({
+  name : 'new',
+  initialState : '',
+  reducers : {
+    newCart(state, action){
+      return action.payload
+    }
+  }
+})
+
+
+
+export let { newCart } = newOne.actions;
 export let { addNum, addCart, minusNum, deleteCart } = cart.actions;
 
 export default configureStore({
   reducer: {
     user : user.reducer,
     stock : stock.reducer,
-    cart : cart.reducer
+    cart : cart.reducer,
+    newOne : newOne.reducer
     },
 });
