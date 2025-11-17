@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.navbar-container {
+  padding-left: 10px;
+  background-color: darkslategray;
+  align-content: center;
+}
+
+.main-bg {
+  height: 300px;
+  background-image: url('./img/bg-1.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.product-img {
+  width: 60%;
+}
+
+.product-container {
+  padding: 30px;
+  padding-top: 0;
+}
+
+.product-box {
+  text-align: center;;
+  padding: 5px;
+  padding-top: 15px;
+  position: relative;
+  padding-bottom: 30px;
+  border: 1px solid #eee;
+}
+
+.shoes-detail-button {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.container{
+  padding: 10px;
+  padding-left: 0;
+}
+
+.center-box {
+  display:block; 
+  margin: auto; 
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.under {
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+}
+
+.start {
+  opacity: 0;
+}
+
+.end {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.detail-container {
+  padding: 20px;
+}
