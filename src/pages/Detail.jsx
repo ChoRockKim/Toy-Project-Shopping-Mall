@@ -62,7 +62,7 @@ function DetailPage(props) {
 
             {/* 상품 정보 구현 */}
             <div className="row">
-              <div className="col-sm-6">
+              <div className="col-sm-6" style={{maxWidth : '400px'}}>
                 <img src={`https://codingapple1.github.io/shop/shoes${Number(cur_shoes.id)+1}.jpg`} width="100%" />
               </div>
               <div className="col-sm-6">

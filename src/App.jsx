@@ -24,7 +24,7 @@ function App() {
               
         {/* Navbar 부분 구현 */}
         <Navbar data-bs-theme="dark" className='navbar-container'>
-            <Navbar.Brand as={Link} to="/">Shoes Shop</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/">ShoesShop</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link onClick={()=>{navigate('/')}}>Home</Nav.Link>
               {/* <Nav.Link onClick={()=>{navigate('/detail/0')}}>Detail</Nav.Link> */}
