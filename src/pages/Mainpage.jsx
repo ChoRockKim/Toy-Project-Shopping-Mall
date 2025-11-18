@@ -45,7 +45,9 @@ function MainPage(props) {
                 .then((result)=>{
                     props.setClicknum(props.clicknum+1)
                     let copied_data = [...props.shoes, ...result.data]
-                    props.setShoes(copied_data)
+                    let unique_data = [...new Map(copied_data.map(elem=>[elem.id, elem])).values()]
+
+                    props.setShoes(unique_data)
                 })
                 .catch(()=>{
                     console.log('실패')

@@ -7,14 +7,14 @@ import { Tab } from "bootstrap";
 import { useDispatch } from "react-redux";
 import { addCart, newCart } from './../store.js'
 import AlertMessage from "./../components/Alert.jsx";
-
+import axios from "axios";
+import data from "../data.js";
 
 function DetailPage(props) {
 
 
   let {id} = useParams();
   let [text, setText] = useState('')
-
 
   useEffect(()=>{
     console.log(isNaN(Number(text)))
@@ -49,6 +49,49 @@ function DetailPage(props) {
   let dispatch = useDispatch()
   let [alertPop, setAlertPop] = useState(false)
   const alertTimer = useRef(null)
+
+  // 최근 본 상품 로컬스토리지 추가 기능 구현
+  useEffect(()=>{
+    
+    if (!cur_shoes) return;
+    
+    let watched = JSON.parse(localStorage.getItem('watched'))
+    let cur_storage = watched ? watched : [];
+
+    cur_storage.push(cur_shoes.id)
+    cur_storage = Array.from(new Set(cur_storage))
+    localStorage.setItem('watched', JSON.stringify(cur_storage))
+  
+  }, [cur_shoes])
+
+  // 만약 shoes 데이터 아직가 없다??
+
+  useEffect(()=>{
+
+  if (cur_shoes) return;
+
+  let data_num
+
+  if (id>2 && id <6) {
+    data_num = 2    
+  } else if (id>5 && id < 9) {
+    data_num = 3
+  }
+
+  if (data_num) {  
+      axios.get(`https://codingapple1.github.io/shop/data${data_num}.json`)
+      .then((result)=>{
+        props.setShoes([...props.shoes, ...result.data])
+      })
+      .catch(()=>{
+        console.log('실패')
+      })
+  }
+  }, [])
+
+  if (!cur_shoes) {
+    return (<div>로딩중...</div>)
+  }
 
   return (
           // 뒤로가기 버튼 구현
@@ -90,7 +133,7 @@ function DetailPage(props) {
                   }, 2000)
                 }}
                 className="">주문하기</button> <br/><br/>
-                <input type="text" onChange={(e)=>{
+                <input placeholder="수량을 입력해주세요" type="text" onChange={(e)=>{
                   setText(e.target.value)}} value={text} />
                   
                   
@@ -147,7 +190,6 @@ function TabContent({ tabs, shoes }) {
 
   }, [tabs])
 
-  // 1. 탭 내용을 배열에 순서대로 담습니다.
   let tabContents = [
     
     // [0번째 탭] : 상세 정보

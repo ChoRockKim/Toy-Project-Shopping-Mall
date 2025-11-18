@@ -10,6 +10,7 @@ div {
   padding-left: 10px;
   background-color: darkslategray;
   align-content: center;
+  z-index: 10;
 }
 
 .main-bg {
@@ -129,4 +130,51 @@ div {
 
 .go-to-cart:hover {
   background: #f5f5f5;
+}
+
+.cur-cart-how {
+  background-color: #eee;
+  width: 25px;
+  height: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+  border-radius: 50%;
+  text-align: center;
+  align-content: center;
+  margin: 0;
+  margin-left: 10px;
+}
+
+.last-item {
+  font-weight: 600;
+}
+
+.last-item-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 20%;
+  min-width: 250px;
+  min-height: 200px;
+  background-color: #eee;
+  color: black;
+  position: fixed;
+  z-index: 11;
+  top: 60px;
+  right: 10px;
+  opacity: 0.9;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 18px;
+  text-align: center;
+  transition: all 1s;
+}
+
+.currentProducts {
+  cursor: pointer;
+}
+
+.inactive {
+  display: none;
 }

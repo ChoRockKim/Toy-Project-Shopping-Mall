@@ -12,8 +12,7 @@ function AlertMessage(props) {
     }
 
     let cartItems = useSelector(state => state.newOne)
-    console.log(cartItems)
-
+    
     return (
         <>
         <div className={`detail-alert-message ${temp}`}
