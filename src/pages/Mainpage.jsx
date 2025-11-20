@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useActionState, useState } from "react";
+import ShoesInfo from "./ShoesInfo";
 
 function MainPage(props) {
     let [morebutton, setMorebutton] = useState(true)
@@ -56,24 +57,5 @@ function MainPage(props) {
       </>
   )
 }
-
-function ShoesInfo(props) {
-    let navigate = useNavigate();
-
-    return (
-    <>  
-      <div className="col-sm-6 col-md-4 product-box">
-        <img src={`https://codingapple1.github.io/shop/shoes${props.index+1}.jpg`} className='product-img'/>
-        <h4>{props.elem.title}</h4>
-        <p>{props.elem.price}</p>
-        <button className="shoes-detail-button under" onClick={()=>{
-            navigate(`/detail/${props.index}`)
-
-        }}>상세페이지</button>
-      </div>
-    </>
-  )
-}
-
 
 export default MainPage;

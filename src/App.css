@@ -178,3 +178,11 @@ div {
 .inactive {
   display: none;
 }
+
+.heart-button {
+  position: absolute;
+  right: 5px;
+  bottom: 15px;
+  border: none;
+  background: none;
+}

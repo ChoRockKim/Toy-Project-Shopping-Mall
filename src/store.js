@@ -57,8 +57,31 @@ let newOne = createSlice({
   }
 })
 
+const productLikes = localStorage.getItem('productLike')
 
+let like = createSlice({
+  name : 'like',
+  initialState : productLikes ? JSON.parse(productLikes) : {},
+  
+  reducers : {
+    addLike(state, action) {
+      const productId = action.payload;
 
+      if (state[productId] == undefined ||
+        state[productId] == 0
+      ) {
+        state[productId] = 1
+      } else {
+        state[productId] = 0;
+      }
+
+      localStorage.setItem('productLike', JSON.stringify(state))
+
+    }
+  }
+})
+
+export let { addLike } = like.actions;
 export let { newCart } = newOne.actions;
 export let { addNum, addCart, minusNum, deleteCart } = cart.actions;
 
@@ -67,6 +90,7 @@ export default configureStore({
     user : user.reducer,
     stock : stock.reducer,
     cart : cart.reducer,
-    newOne : newOne.reducer
+    newOne : newOne.reducer,
+    like : like.reducer
     },
 });
